@@ -1,3 +1,4 @@
+# Trigger Vercel deployment
 import os
 import sqlite3
 from flask import Flask, jsonify, render_template, request
