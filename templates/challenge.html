@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}The Hidden Test Case | LeetVault{% endblock %}
+{% block content %}
+<section class="shell inner-page">
+  <div class="challenge-badge">VAULT SECURITY // MEDIUM</div>
+  <h1>The Hidden Test Case</h1>
+  <p class="hero-lede">LeetVault's legacy search service has been acting strangely. Some old records appear to be missing, and the database team insists everything is normal.</p>
+  <div class="challenge-layout">
+    <article class="challenge-card"><div class="section-kicker">YOUR BRIEF</div><p>Investigate the application through normal interaction and recover the hidden verification flag. The answer is somewhere in the data behind the vault.</p><div class="challenge-rule"><span>Scope</span><span>LeetVault local database only</span></div><div class="challenge-rule"><span>Category</span><span>Web / SQL Injection</span></div><div class="challenge-rule"><span>Difficulty</span><span>Medium</span></div></article>
+    <div class="challenge-checklist"><div class="section-kicker">FIELD NOTES</div><div class="check-row"><span class="check-box">1</span><span>Explore the problem search</span></div><div class="check-row"><span class="check-box">2</span><span>Follow the strange behavior</span></div><div class="check-row"><span class="check-box">3</span><span>Recover the hidden record</span></div><a class="button primary" href="/problems">Enter the vault <span>→</span></a></div>
+  </div>
+</section>
+{% endblock %}

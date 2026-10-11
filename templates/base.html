@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}LeetVault | Practice with purpose{% endblock %}</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><span class="brand-mark">LV</span><span>LeetVault</span></a>
+  <nav><a href="/problems">Problems</a><a href="/challenge">Challenge</a><a href="/login" class="nav-login">Sign in</a></nav>
+</header>
+<main>{% block content %}{% endblock %}</main>
+<footer class="footer"><span>LeetVault Platform</span><span class="status-dot"></span><span>All systems operational</span><span class="footer-spacer"></span><span class="mono">build 2.8.14-legacy</span></footer>
+</body>
+</html>

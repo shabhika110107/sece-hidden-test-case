@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Problems | LeetVault{% endblock %}
+{% block content %}
+<section class="shell inner-page">
+  <div class="section-kicker">PROBLEM ARCHIVE</div>
+  <h1>Find your next <span>challenge.</span></h1>
+  <p class="hero-lede">Search by title or topic. A few older records may still be indexed by the legacy service.</p>
+  <div class="searchbar"><input id="search" placeholder="Try “Arrays” or “Binary Search”" autocomplete="off"><button id="go" class="button primary">Search</button></div>
+  <div id="status" class="muted">Loading problems…</div>
+  <div id="results" class="problem-grid"></div>
+  <p class="small-note">Tip: search results are served by a compatibility service while the archive is being migrated.</p>
+</section>
+<script>
+const input = document.getElementById('search');
+const results = document.getElementById('results');
+const statusBox = document.getElementById('status');
+async function searchProblems() {
+  statusBox.textContent = 'Searching the vault…';
+  results.innerHTML = '';
+  try {
+    const r = await fetch('/api/problems?search=' + encodeURIComponent(input.value));
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || 'Search failed');
+    statusBox.textContent = `${data.count} record(s) returned`;
+    for (const p of data.results) {
+      const card = document.createElement('article');
+      card.className = 'problem-card';
+      const title = document.createElement('h3'); title.textContent = p.title ?? 'Untitled record';
+      const meta = document.createElement('div'); meta.className = 'problem-meta';
+      meta.textContent = [p.category, p.difficulty].filter(Boolean).join(' · ');
+      card.append(title, meta); results.append(card);
+    }
+  } catch (e) { statusBox.textContent = e.message; }
+}
+document.getElementById('go').addEventListener('click', searchProblems);
+input.addEventListener('keydown', e => { if (e.key === 'Enter') searchProblems(); });
+searchProblems();
+</script>
+{% endblock %}
