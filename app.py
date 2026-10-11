@@ -4,7 +4,7 @@ import sqlite3
 from flask import Flask, jsonify, render_template, request
 
 APP_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.environ.get("DATABASE_PATH", os.path.join(APP_DIR, "leetvault.db"))
+DB_PATH = os.environ.get("DATABASE_PATH", "/tmp/leetvault.db")
 FLAG = os.environ.get("CTF_FLAG", "SECE{legacy_search_leaks_internal_notes}")
 
 app = Flask(__name__)
